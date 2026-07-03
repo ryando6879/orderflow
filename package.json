@@ -1,0 +1,12 @@
+{
+  "name": "orderflow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Order pricing service: cart totals, discounts, and shipping.",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.9"
+  }
+}
