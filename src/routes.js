@@ -14,10 +14,11 @@ const ROUTES = {
  * checkout was abandoned), the customer is sent back to their cart.
  */
 function postCheckoutTarget(orderId) {
+
   if (!orderId) {
     return ROUTES.cart;
   }
-  return ROUTES.home;
+  return ROUTES.confirmation(orderId);
 }
 
 module.exports = { ROUTES, postCheckoutTarget };

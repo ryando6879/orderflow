@@ -12,10 +12,11 @@ function completeCheckout(items, region) {
   const orderId = `ORD-${Date.now()}`;
   return {
     orderId,
+
     subtotal,
     shipping,
     total: subtotal + shipping,
-    redirectTo: postCheckoutTarget(orderId),
+    redirectTo: `/order/${orderId}`,
   };
 }
 
