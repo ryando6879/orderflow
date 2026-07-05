@@ -7,7 +7,7 @@ const { getProduct } = require("./catalog");
 function lineTotal(item) {
   const product = getProduct(item.sku);
   const discount = product.discount;
-  const pct = discount.percent;
+  const pct = discount ? discount.percent : 0;
   const unit = Math.round(product.price * (1 - pct / 100));
   return unit * item.qty;
 }
