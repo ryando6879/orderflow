@@ -15,7 +15,7 @@ function completeCheckout(items, region) {
     subtotal,
     shipping,
     total: subtotal + shipping,
-    redirectTo: postCheckoutTarget(orderId),
+    redirectTo: `/orders/confirmation?order=${orderId}`,
   };
 }
 
