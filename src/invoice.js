@@ -1,21 +1,32 @@
 const { memberTier } = require("./loyalty");
+const { bestPromotion, promotionDiscount } = require("./promotions");
 
 /**
- * Build the final invoice for a priced order. The member's loyalty
- * discount applies to the merchandise subtotal only; shipping is always
- * charged in full.
+ * Build the final invoice for a priced order.
+ *
+ * Discount stack (shipping is always charged in full):
+ *   1. the member's loyalty discount, applied to the merchandise subtotal
+ *   2. the best order promotion — its eligibility threshold and its
+ *      percentage are both evaluated against the merchandise subtotal
+ *      BEFORE the member discount (the advertised cart value)
  *
  * @param {{subtotal: number, shipping: number}} pricing  order pricing in cents
  * @param {{lifetimeSpend?: number}} member               the purchasing member
- * @returns {{tier: string, discount: number, total: number}} invoice in cents
+ * @returns {{tier: string, discount: number, promo: string | null,
+ *            promoDiscount: number, total: number}} invoice in cents
  */
 function buildInvoice(pricing, member) {
   const tier = memberTier(member);
   const discount = Math.round(pricing.subtotal * (tier.discountPct / 100));
+  const discountedSubtotal = pricing.subtotal - discount;
+  const promo = bestPromotion(discountedSubtotal);
+  const promoDiscount = promotionDiscount(discountedSubtotal, promo);
   return {
     tier: tier.name,
     discount,
-    total: pricing.subtotal + pricing.shipping - discount,
+    promo: promo ? promo.code : null,
+    promoDiscount,
+    total: discountedSubtotal - promoDiscount + pricing.shipping,
   };
 }
 
