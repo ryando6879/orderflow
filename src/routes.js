@@ -17,7 +17,7 @@ function postCheckoutTarget(orderId) {
   if (!orderId) {
     return ROUTES.cart;
   }
-  return ROUTES.home;
+  return `${ROUTES.orderConfirmation}?order=${orderId}`;
 }
 
 module.exports = { ROUTES, postCheckoutTarget };
