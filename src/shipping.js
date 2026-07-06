@@ -11,7 +11,7 @@ const RATES = {
  * regions without a dedicated rate fall back to the rest-of-world rate.
  */
 function shippingCost(region, itemCount) {
-  const rate = RATES[region.toLowerCase()];
+  const rate = RATES[region.toLowerCase()] || RATES.row;
   return rate.base + rate.perItem * itemCount;
 }
 
