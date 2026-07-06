@@ -11,7 +11,7 @@ const { memberTier } = require("./loyalty");
  */
 function buildInvoice(pricing, member) {
   const tier = memberTier(member);
-  const discount = Math.round(pricing.shipping * (tier.discountPct / 100));
+  const discount = Math.round(pricing.subtotal * (tier.discountPct / 100));
   return {
     tier: tier.name,
     discount,
