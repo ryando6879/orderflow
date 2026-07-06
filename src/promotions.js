@@ -1,9 +1,10 @@
+
 // Order-level promotions ("X% off orders over $Y"). The advertised
 // threshold and percentage always refer to the merchandise subtotal
 // (the cart value) BEFORE any loyalty/member discount is taken off.
 const PROMOTIONS = [
-  { code: "SAVE5", minSubtotal: 6000, percentOff: 5 },
   { code: "BULK10", minSubtotal: 12000, percentOff: 10 },
+  { code: "SAVE5", minSubtotal: 6000, percentOff: 5 },
 ];
 
 /**

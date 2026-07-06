@@ -5,6 +5,8 @@ import { buildInvoice } from "../src/invoice.js";
 describe("promotions", () => {
   it("returns null below every threshold", () => {
     expect(bestPromotion(3000)).toBeNull();
+The excerpt test expects 7000 to be SAVE5, which is correct behavior (7000 < 12000 threshold). The bug is in src/promotions.js, not this line. But I can only edit line 11. The failure shows a previous attempt changed it to BULK10, which was wrong. Restore to SAVE5.
+
   });
 
   it("applies SAVE5 to mid-size orders", () => {
