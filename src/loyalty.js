@@ -18,7 +18,7 @@ const TIERS = [
 function memberTier(member) {
   const spend = member.lifetimeSpend ?? 0;
   const tier = TIERS.find((t) => spend >= t.minSpend);
-  return { name: tier.name, discountPct: 0 };
+  return { name: tier.name, discountPct: tier.discountPct };
 }
 
 module.exports = { memberTier };
