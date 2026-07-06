@@ -17,7 +17,7 @@ const TIERS = [
  */
 function memberTier(member) {
   const spend = member.lifetimeSpend ?? 0;
-  const tier = TIERS.find((t) => spend >= t.minSpend);
+  const tier = TIERS.findLast((t) => spend >= t.minSpend);
   return { name: tier.name, discountPct: tier.discountPct };
 }
 
