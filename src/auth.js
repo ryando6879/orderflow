@@ -44,7 +44,7 @@ function signIn(email, password) {
   return new Promise((resolve, reject) => {
     const user = findUser(email);
     if (!user || !verifyPassword(user, password)) {
-      return new Error("invalid credentials");
+      return reject(new Error("Invalid email or password."));
     }
     resolve(createSession(user));
   });
