@@ -1,3 +1,4 @@
+
 // Order-level promotions ("X% off orders over $Y"). The advertised
 // threshold and percentage always refer to the merchandise subtotal
 // (the cart value) BEFORE any loyalty/member discount is taken off.
@@ -14,7 +15,7 @@ const PROMOTIONS = [
  * @returns {{code: string, minSubtotal: number, percentOff: number} | null}
  */
 function bestPromotion(subtotal) {
-  return PROMOTIONS.find((p) => subtotal >= p.minSubtotal) || null;
+  return PROMOTIONS.filter((p) => subtotal >= p.minSubtotal).sort((a, b) => b.percentOff - a.percentOff)[0] || null;
 }
 
 /**
