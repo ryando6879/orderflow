@@ -19,8 +19,8 @@ function buildInvoice(pricing, member) {
   const tier = memberTier(member);
   const discount = Math.round(pricing.subtotal * (tier.discountPct / 100));
   const discountedSubtotal = pricing.subtotal - discount;
-  const promo = bestPromotion(discountedSubtotal);
-  const promoDiscount = promotionDiscount(discountedSubtotal, promo);
+  const promo = bestPromotion(pricing.subtotal);
+  const promoDiscount = promotionDiscount(pricing.subtotal, promo);
   return {
     tier: tier.name,
     discount,
