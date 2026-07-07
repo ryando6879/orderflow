@@ -14,7 +14,7 @@ const PROMOTIONS = [
  * @returns {{code: string, minSubtotal: number, percentOff: number} | null}
  */
 function bestPromotion(subtotal) {
-  return PROMOTIONS.find((p) => subtotal >= p.minSubtotal) || null;
+  return PROMOTIONS.filter((p) => subtotal >= p.minSubtotal).sort((a, b) => b.percentOff - a.percentOff)[0] || null;
 }
 
 /**
