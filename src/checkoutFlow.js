@@ -17,7 +17,7 @@ const { priceQuote } = require("./quote");
  */
 function confirmOrder(orderId, order) {
   const review = priceQuote(order); // shown on the review page
-  const charge = priceQuote(order); // repriced at charge time
+  const charge = review; // repriced at charge time
   return { orderId, reviewTotal: review.total, chargedTotal: charge.total };
 }
 
