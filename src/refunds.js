@@ -28,7 +28,7 @@ function refundAmount(record, returnedItems) {
     if (qty === line.qty) {
       refund += line.paid;
     } else {
-      refund += Math.round((line.paid / line.qty) * (line.qty - qty));
+      refund += Math.round((line.paid / line.qty) * qty);
     }
   }
   return refund;
