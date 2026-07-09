@@ -25,7 +25,10 @@ const FREE_SHIPPING_THRESHOLD = 5000; // cents — free shipping at $50
 function freeShippingStatus(items = []) {
   const total = items.reduce((sum, item) => {
     const product = getProduct(item.sku);
-    return sum + product.price * item.qty;
+    const discount = product.discount;
+    const pct = discount ? discount.percent : 0;
+    const unit = Math.round(product.price * (1 - pct / 100));
+    return sum + unit * item.qty;
   }, 0);
   const unlocked = total >= FREE_SHIPPING_THRESHOLD;
   const remaining = unlocked ? 0 : FREE_SHIPPING_THRESHOLD - total;

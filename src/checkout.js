@@ -8,7 +8,7 @@ const { postCheckoutTarget } = require("./routes");
  */
 function completeCheckout(items, region) {
   const subtotal = cartTotal(items);
-  const shipping = shippingCost(region, items.reduce((n, i) => n + i.qty, 0));
+  const shipping = subtotal >= 5000 ? 0 : shippingCost(region, items.reduce((n, i) => n + i.qty, 0));
   const orderId = `ORD-${Date.now()}`;
   return {
     orderId,
