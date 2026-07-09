@@ -30,7 +30,7 @@ function trackingModel(order) {
     label: STEP_LABELS[key],
     state: i < idx ? "done" : i === idx ? "current" : "todo",
   }));
-  const percent = Math.round((idx / STATUS_ORDER.length) * 100);
+  const percent = Math.round(((idx + 1) / STATUS_ORDER.length) * 100);
   return { steps, percent };
 }
 

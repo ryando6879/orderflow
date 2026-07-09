@@ -19,7 +19,11 @@ const STATUS_ORDER = ["placed", "processing", "shipped", "delivered"];
 function currentStatus(order) {
   const events = order.events || [];
   if (events.length === 0) return STATUS_ORDER[0];
-  return events[events.length - 1].status;
+  return events.reduce((latest, event) => {
+    const latestIndex = STATUS_ORDER.indexOf(latest.status);
+    const eventIndex = STATUS_ORDER.indexOf(event.status);
+    return eventIndex > latestIndex ? event : latest;
+  }).status;
 }
 
 module.exports = { STATUS_ORDER, currentStatus };
