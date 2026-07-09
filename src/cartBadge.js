@@ -14,7 +14,7 @@
  * @returns {string} the badge label
  */
 function cartBadgeText(items = []) {
-  const count = items.length;
+  const count = items.reduce((sum, item) => sum + item.qty, 0);
   return `${count} ${count === 1 ? "item" : "items"}`;
 }
 
