@@ -1,0 +1,57 @@
+/*
+ * Storefront stylesheet.
+ *
+ * Component classes follow BEM (block--modifier). Server-rendered pages must
+ * emit exactly the class names defined here — the browser silently ignores a
+ * class the stylesheet doesn't define, so an unknown class just renders in
+ * the component's default (grey) style with no warning anywhere.
+ */
+
+body {
+  font-family: system-ui, sans-serif;
+  color: #24292f;
+  margin: 0;
+}
+
+.tracking-page {
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.tracking-steps {
+  list-style: none;
+  padding: 0;
+}
+
+/* Journey steps: grey by default, green once completed, blue while active. */
+.step {
+  color: #8a8f98;
+  padding: 6px 0;
+}
+
+.step--done {
+  color: #1a7f37;
+}
+
+.step--done::before {
+  content: "\2713 ";
+}
+
+.step--current {
+  color: #0969da;
+  font-weight: 600;
+}
+
+/* Progress bar under the steps; the fill width is set inline by the renderer. */
+.progress {
+  background: #eaeef2;
+  border-radius: 6px;
+  height: 8px;
+}
+
+.progress__fill {
+  background: #1a7f37;
+  border-radius: 6px;
+  height: 8px;
+}
