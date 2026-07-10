@@ -27,7 +27,7 @@ function createSearchBox(view) {
   function type(query) {
     currentQuery = query;
     return searchProducts(query).then((products) => {
-      view.render(products, query);
+      if (query === currentQuery) view.render(products, query);
     });
   }
 

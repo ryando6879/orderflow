@@ -23,7 +23,7 @@ function createResultsView() {
   let shownCount = -1;
 
   function render(products, query) {
-    if (products.length === shownCount) {
+    if (products.length === shownCount && query === shownQuery) {
       // Perf: identical result set is already on screen — skip the repaint.
       return;
     }
