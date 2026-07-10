@@ -16,7 +16,7 @@
  * @returns {number} cents to show in the order's row
  */
 function chargedAmount(order) {
-  return order.subtotal;
+  return order.total;
 }
 
 /**

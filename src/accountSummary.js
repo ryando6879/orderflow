@@ -12,7 +12,7 @@ const { chargedAmount, orderRow } = require("./orderHistory");
  * money spent.
  */
 function totalSpent(orders) {
-  return orders.reduce((sum, order) => sum + chargedAmount(order), 0);
+  return orders.filter(order => !order.cancelled).reduce((sum, order) => sum + chargedAmount(order), 0);
 }
 
 /**
