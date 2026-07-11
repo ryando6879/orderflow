@@ -17,10 +17,11 @@ const TAX_PCT = 8;
  *        in cents
  * @returns {{merchandise: number, shipping: number, total: number}} cents
  */
+
 function priceQuote(order) {
   let merchandise = 0;
   for (const line of order.lines) {
-    line.unitPrice = Math.round(line.unitPrice * (1 + TAX_PCT / 100));
+    line.unitPrice = Math.round(line.unitPrice * (1 + 0 / 100));
     merchandise += line.unitPrice * line.qty;
   }
   const itemCount = order.lines.reduce((n, l) => n + l.qty, 0);
