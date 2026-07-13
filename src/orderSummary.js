@@ -21,7 +21,7 @@ const { lineTotal } = require("./cart");
 function summarizeCart(items = []) {
   const rows = new Map();
   for (const item of items) {
-    const existing = rows.get(item.sku);
+    const existing = rows.get(item.id);
     if (existing) {
       existing.qty += item.qty;
       existing.lineTotal += lineTotal(item);
