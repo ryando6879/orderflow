@@ -19,15 +19,23 @@ const { lineTotal } = require("./cart");
  * @returns {{ sku: string, name: string, qty: number, lineTotal: number }[]}
  */
 function summarizeCart(items = []) {
-  return items.map((item) => {
-    const product = getProduct(item.sku);
-    return {
-      sku: item.sku,
-      name: product.name,
-      qty: item.qty,
-      lineTotal: lineTotal(item),
-    };
-  });
+  const rows = new Map();
+  for (const item of items) {
+    const existing = rows.get(item.sku);
+    if (existing) {
+      existing.qty += item.qty;
+      existing.lineTotal += lineTotal(item);
+    } else {
+      const product = getProduct(item.sku);
+      rows.set(item.sku, {
+        sku: item.sku,
+        name: product.name,
+        qty: item.qty,
+        lineTotal: lineTotal(item),
+      });
+    }
+  }
+  return Array.from(rows.values());
 }
 
 module.exports = { summarizeCart };
