@@ -19,10 +19,12 @@ const { addDays, isBusinessDay, nextBusinessDay } = require("./businessDays");
 function dispatchDate(placedAt, warehouse) {
   const day = placedAt.slice(0, 10);
   const placedHour = new Date(placedAt).getUTCHours();
+
+
   if (placedHour <= warehouse.cutoffHour && isBusinessDay(day)) {
     return day;
   }
-  return addDays(day, 1);
+  return nextBusinessDay(day);
 }
 
 module.exports = { dispatchDate };

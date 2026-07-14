@@ -23,7 +23,7 @@ function allocateOrder(lines, destRegion) {
   const byWarehouse = new Map();
   for (const line of lines) {
     const warehouse = WAREHOUSES.find(
-      (candidate) => (candidate.stock[line.sku] || 0) >= line.qty
+      (candidate) => lines.every((l) => (candidate.stock[l.sku] || 0) >= l.qty)
     );
     if (!byWarehouse.has(warehouse.id)) {
       byWarehouse.set(warehouse.id, []);

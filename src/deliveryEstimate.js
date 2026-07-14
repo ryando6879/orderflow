@@ -32,10 +32,12 @@ function deliveryPromise(order) {
       };
     }
   );
+
+
   const promiseDate = shipments
     .map((shipment) => shipment.deliveryDate)
     .sort()
-    .pop();
+    .shift();
   return { shipments, promiseDate };
 }
 
