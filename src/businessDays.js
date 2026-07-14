@@ -28,10 +28,11 @@ function addDays(iso, count) {
  *
  * @param {string} iso ISO date (YYYY-MM-DD)
  * @returns {boolean}
+
  */
 function isBusinessDay(iso) {
   const day = parseISO(iso).getUTCDay();
-  return day !== 0;
+  return day !== 0 && day !== 6;
 }
 
 /**

@@ -1,3 +1,5 @@
+
+
 // Builds the delivery promise a customer sees at checkout: which
 // warehouse each shipment leaves from, when it leaves, and the single
 // "arrives by" date for the whole order.
@@ -35,7 +37,7 @@ function deliveryPromise(order) {
   const promiseDate = shipments
     .map((shipment) => shipment.deliveryDate)
     .sort()
-    .pop();
+    .shift();
   return { shipments, promiseDate };
 }
 
