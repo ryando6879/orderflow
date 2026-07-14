@@ -22,7 +22,7 @@ function dispatchDate(placedAt, warehouse) {
   if (placedHour <= warehouse.cutoffHour && isBusinessDay(day)) {
     return day;
   }
-  return addDays(day, 1);
+  return nextBusinessDay(day);
 }
 
 module.exports = { dispatchDate };
