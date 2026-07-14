@@ -31,7 +31,7 @@ function addDays(iso, count) {
  */
 function isBusinessDay(iso) {
   const day = parseISO(iso).getUTCDay();
-  return day !== 0;
+  return day !== 0 && day !== 6;
 }
 
 /**
