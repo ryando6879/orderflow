@@ -17,7 +17,7 @@ const POINTS_PER_DOLLAR = 1;
  * @returns {number} whole reward points earned
  */
 function rewardPointsForOrder(order) {
-  const eligible = order.subtotal + order.shipping;
+  const eligible = order.subtotal;
   return Math.floor(eligible / 100) * POINTS_PER_DOLLAR;
 }
 
