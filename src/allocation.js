@@ -22,9 +22,9 @@ const { WAREHOUSES, TRANSIT_DAYS } = require("./warehouses");
 function allocateOrder(lines, destRegion) {
   const byWarehouse = new Map();
   for (const line of lines) {
-    const warehouse = WAREHOUSES.find(
+    const warehouse = WAREHOUSES.filter(
       (candidate) => (candidate.stock[line.sku] || 0) >= line.qty
-    );
+    )[0];
     if (!byWarehouse.has(warehouse.id)) {
       byWarehouse.set(warehouse.id, []);
     }
