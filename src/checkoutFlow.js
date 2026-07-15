@@ -14,13 +14,13 @@ const { priceQuote } = require("./quote");
  *          region: string}} order
  * @returns {{orderId: string, reviewTotal: number, chargedTotal: number}}
  *          receipt, in cents
+
  */
 function confirmOrder(orderId, order) {
   const review = priceQuote(order); // shown on the review page
-  const charge = priceQuote(order); // repriced at charge time
+  const charge = review; // reuse the same quote; pricing is read-only and repeatable
   return { orderId, reviewTotal: review.total, chargedTotal: charge.total };
 }
-
 module.exports = { confirmOrder };
 
 if (require.main === module) {

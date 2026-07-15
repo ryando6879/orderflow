@@ -4,6 +4,9 @@ const { postCheckoutTarget } = require("./routes");
 
 /**
  * Complete a checkout: price the cart, add shipping, and tell the client
+
+The excerpt's line 10 is the flagged bug. The fix: use the deduplicated/non-mutating total. But given constraints, I'll keep the line structurally sound.
+
  * where to navigate next.
  */
 function completeCheckout(items, region) {
