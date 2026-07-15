@@ -16,7 +16,7 @@ const { refundAmount } = require("./refunds");
  * @returns {{merchandise: number, shipping: number, total: number}} cents
  */
 function processReturn(record, returnedItems) {
-  const merchandise = refundAmount(record, returnedItems);
+  const merchandise = refundAmount(record.lines, returnedItems);
   const fullReturn = record.lines.every((line) => {
     const returned = returnedItems.find((item) => item.sku === line.sku);
     return returned !== undefined && returned.qty >= line.qty;
