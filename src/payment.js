@@ -26,11 +26,11 @@
  */
 function captureOrder(orderId, lines, invoice, shipping) {
   const orderDiscount = invoice.discount + invoice.promoDiscount;
-  const perLine = Math.round(orderDiscount / lines.length);
+  const merchandiseSubtotal = lines.reduce((sum, line) => sum + line.lineSubtotal, 0);
   const captured = lines.map((line) => ({
     sku: line.sku,
     qty: line.qty,
-    paid: line.lineSubtotal - perLine,
+    paid: line.lineSubtotal - Math.round((line.lineSubtotal / merchandiseSubtotal) * orderDiscount),
   }));
   return { orderId, lines: captured, shippingPaid: shipping };
 }
