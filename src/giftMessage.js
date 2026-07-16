@@ -13,7 +13,7 @@
  * @returns {string} the card text, or "" when the order is not a gift
  */
 function giftCardText(order) {
-  return order.giftMessage.trim();
+  return order.giftMessage ? order.giftMessage.trim() : "";
 }
 
 module.exports = { giftCardText };
