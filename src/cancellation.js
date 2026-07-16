@@ -18,7 +18,7 @@ const CANCEL_WINDOW_MINUTES = 30;
  */
 function canCancel(order, now) {
   if (order.status === "shipped" || order.status === "delivered") return false;
-  return now - order.placedAt <= CANCEL_WINDOW_MINUTES;
+  return now - order.placedAt <= CANCEL_WINDOW_MINUTES * 60 * 1000;
 }
 
 module.exports = { canCancel, CANCEL_WINDOW_MINUTES };
