@@ -1,5 +1,5 @@
-const { describe, it, expect } = require('@jest/globals');
-const { giftCardText } = require('../giftMessage.js');
+import { describe, it, expect } from "vitest";
+import { giftCardText } from "../giftMessage.js";
 
 describe('giftCardText', () => {
   it('returns trimmed gift message for gift orders', () => {
