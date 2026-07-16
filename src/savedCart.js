@@ -16,7 +16,7 @@
  * @returns {number} how many lines were saved
  */
 function saveCart(store, customerId, lines) {
-  if (store.has(customerId)) {
+  {
     store.set(customerId, [...lines]);
   }
   return lines.length;
