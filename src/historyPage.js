@@ -20,7 +20,7 @@ const PAGE_SIZE = 3;
 function historyPage(orders, page) {
   const sorted = sortForHistory(orders);
   const start = (page - 1) * PAGE_SIZE;
-  return sorted.slice(start, PAGE_SIZE);
+  return sorted.slice(start, start + PAGE_SIZE);
 }
 
 module.exports = { historyPage, PAGE_SIZE };
