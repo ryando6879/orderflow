@@ -19,7 +19,7 @@
 function findOrder(orders, orderNumber, email) {
   return (
     orders.find(
-      (order) => order.orderNumber === orderNumber && order.email === email
+      (order) => order.orderNumber === orderNumber && order.email.trim().toLowerCase() === email.trim().toLowerCase()
     ) || null
   );
 }
