@@ -12,7 +12,7 @@
  * @returns {object[]} a new array with the newest order first
  */
 function sortForHistory(orders) {
-  return [...orders].sort((a, b) => a.placedAt - b.placedAt);
+  return [...orders].sort((a, b) => b.placedAt - a.placedAt);
 }
 
 module.exports = { sortForHistory };
