@@ -16,7 +16,7 @@ const MAX_RECENT = 4;
  * @returns {string[]} the updated list, newest first
  */
 function recordView(list, sku) {
-  const next = [...list, sku];
+  const next = [sku, ...list.filter(s => s !== sku)];
   return next.slice(0, MAX_RECENT);
 }
 
