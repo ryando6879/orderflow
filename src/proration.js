@@ -15,7 +15,7 @@
  * @returns {number} cents (positive; the caller signs the invoice line)
  */
 function unusedCredit(oldPlan, period) {
-  return Math.round(oldPlan.priceCents * (period.daysUsed / period.daysInPeriod));
+  return Math.round(oldPlan.priceCents * (period.daysRemaining / period.daysInPeriod));
 }
 
 /**
