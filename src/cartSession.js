@@ -18,7 +18,7 @@ const { EMPTY_CART } = require("./cartTemplates");
  */
 function cartFor(sessions, sessionId) {
   if (!sessions.has(sessionId)) {
-    sessions.set(sessionId, EMPTY_CART);
+    sessions.set(sessionId, { items: [], couponCode: null });
   }
   return sessions.get(sessionId);
 }
