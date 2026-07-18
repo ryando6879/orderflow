@@ -23,7 +23,7 @@ function invoiceSummary(lines) {
   const credits = lines
     .filter((line) => line.amountCents < 0)
     .reduce((sum, line) => sum + line.amountCents, 0);
-  const tax = Math.round(charges * (TAX_PCT / 100));
+  const tax = Math.round((charges + credits) * (TAX_PCT / 100));
   return { subtotal: charges + credits, tax, total: charges + credits + tax };
 }
 
