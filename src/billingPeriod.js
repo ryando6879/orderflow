@@ -21,10 +21,11 @@ function diffDays(a, b) {
  * @param {string} start ISO date, first day of the period (inclusive)
  * @param {string} end ISO date, last day of the period (inclusive)
  * @param {string} changeDate ISO date the customer switches plans
+
  * @returns {{daysInPeriod: number, daysUsed: number, daysRemaining: number}}
  */
 function periodInfo(start, end, changeDate) {
-  const daysInPeriod = diffDays(start, end);
+  const daysInPeriod = diffDays(start, end) + 1;
   const daysUsed = diffDays(start, changeDate);
   const daysRemaining = daysInPeriod - daysUsed;
   return { daysInPeriod, daysUsed, daysRemaining };
