@@ -17,7 +17,7 @@ const LOW_STOCK_THRESHOLD = 5;
  * @returns {string} the label to render on the product page
  */
 function stockLabel(product) {
-  const available = product.onHand;
+  const available = product.onHand - product.reserved;
   if (available <= 0) return "Out of stock";
   if (available <= LOW_STOCK_THRESHOLD) return `Only ${available} left`;
   return "In stock";
