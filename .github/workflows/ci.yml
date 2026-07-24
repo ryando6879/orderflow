@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["18", "20"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm test
+
+      - name: Boot check
+        run: |
+          npm start &
+          for i in $(seq 1 20); do
+            if curl -sf localhost:3000/health > /dev/null; then
+              echo "booted"
+              curl -s localhost:3000/health/ready
+              exit 0
+            fi
+            sleep 0.5
+          done
+          echo "service did not come up"
+          exit 1

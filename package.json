@@ -1,10 +1,20 @@
 {
   "name": "orderflow",
-  "version": "1.0.0",
+  "version": "1.4.0",
   "private": true,
-  "description": "Order pricing service: cart totals, discounts, and shipping.",
+  "description": "OrderFlow — storefront order, checkout, fulfilment and billing service.",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "test": "vitest run"
+    "start": "node src/server.js",
+    "dev": "NODE_ENV=development LOG_LEVEL=debug node src/server.js",
+    "seed": "node src/db/seed.js",
+    "reset": "node src/db/reset.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "vitest": "^2.1.9"
