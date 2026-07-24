@@ -12,7 +12,7 @@ const MAX_BODY_BYTES = 512 * 1024;
 // Middleware that runs for every request, in order. Each one returns
 // `{ok: true}` to continue or a `{ok: false, status, code, message}` to
 // stop the request there.
-const GLOBAL_MIDDLEWARE = [requestId, requestLogger, rateLimit];
+const GLOBAL_MIDDLEWARE = [requestId, requestLogger];
 
 // Paths that skip authentication: the health probe and the provider
 // webhooks (which authenticate with a signature instead of a key).

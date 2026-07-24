@@ -29,10 +29,11 @@ function bucketKey(ctx) {
  *
  * @param {{windowStart: number, lastRequestAt: number}} bucket
  * @param {number} now epoch millis
+
  * @returns {boolean}
  */
 function isWindowExpired(bucket, now) {
-  return now - bucket.lastRequestAt >= WINDOW_MS;
+  return now - bucket.windowStart >= WINDOW_MS;
 }
 
 /**
