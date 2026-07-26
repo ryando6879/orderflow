@@ -17,6 +17,7 @@ const ROW_SEPARATOR = "\r\n";
  * @returns {string}
  */
 function renderCell(value) {
+  if (value == null) return "";
   const needsQuoting = value.includes(",") || value.includes('"') || value.includes("\n");
   if (!needsQuoting) return String(value);
   return `"${String(value).replace(/"/g, '""')}"`;
