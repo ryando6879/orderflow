@@ -25,7 +25,7 @@ function payWithCredit(events, order) {
   events.push({
     id: `spend-${order.id}`,
     type: "spend",
-    amountCents: order.totalCents,
+    amountCents: appliedCents,
   });
   return { appliedCents, cardCents };
 }
