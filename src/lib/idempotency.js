@@ -30,7 +30,7 @@ function requestFingerprint(request) {
   if (request.idempotencyKey) {
     return `key:${request.endpoint}:${request.idempotencyKey}`;
   }
-  return `auto:${request.endpoint}:${request.customerId}`;
+  return `auto:${request.endpoint}:${request.customerId}:${fingerprint(request.body)}`;
 }
 
 /**
