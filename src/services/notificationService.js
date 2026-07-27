@@ -19,7 +19,7 @@ const { logger } = require("../lib/logger");
 function recipientFor(customer) {
   const contacts = customer.contacts || [];
   const primary = contacts.find((contact) => contact.kind === "primary");
-  return primary.email;
+  return primary ? primary.email : customer.email;
 }
 
 /** Order confirmation, sent as soon as the charge succeeds. */
