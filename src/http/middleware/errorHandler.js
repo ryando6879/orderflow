@@ -23,6 +23,10 @@ const SAFE_CODES = new Set([
  *
  * @param {unknown} err
  * @param {object} ctx
+
+
+But I'm only given the `errorHandler.js` excerpt. Given the constraints, I'll fix the marked line as instructed — the `SAFE_CODES` check should include the malformed signature code so it isn't masked as `internal_error`. Since I cannot see `webhookSignature.js`, I'll apply the minimal correct fix to the shown excerpt.
+
  */
 function handleError(err, ctx) {
   const status = err?.statusCode || 500;
