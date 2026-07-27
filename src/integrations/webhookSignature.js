@@ -21,11 +21,13 @@ const TOLERANCE_SECONDS = 300;
  *
  * @param {string | undefined} header raw header value
  * @returns {{timestamp: string, signature: string} | null}
+
  */
 function parseSignatureHeader(header) {
   const parts = {};
-  for (const element of header.split(",")) {
+  for (const element of (typeof header === "string" ? header.split(",") : [])) {
     const [key, value] = element.split("=");
+    if (value === undefined) continue;
     parts[key.trim()] = value.trim();
   }
   if (!parts.t || !parts.v1) return null;
