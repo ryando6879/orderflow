@@ -1,3 +1,4 @@
+
 // CSV writer for the finance and ops exports (see reportingService.js).
 // Finance opens these in Excel, so the output is RFC-4180: CRLF row
 // endings, and any cell containing a comma, a quote or a newline is
@@ -17,9 +18,11 @@ const ROW_SEPARATOR = "\r\n";
  * @returns {string}
  */
 function renderCell(value) {
-  const needsQuoting = value.includes(",") || value.includes('"') || value.includes("\n");
-  if (!needsQuoting) return String(value);
-  return `"${String(value).replace(/"/g, '""')}"`;
+  if (value === null || value === undefined) return "";
+  const str = String(value);
+  const needsQuoting = str.includes(",") || str.includes('"') || str.includes("\n");
+  if (!needsQuoting) return str;
+  return `"${str.replace(/"/g, '""')}"`;
 }
 
 /**
