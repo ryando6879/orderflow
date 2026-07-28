@@ -35,7 +35,7 @@ function rateBps(region) {
  */
 function taxableBase(amounts) {
   const region = String(amounts.region || "").toLowerCase();
-  let base = amounts.merchandise;
+  let base = amounts.merchandise - (amounts.discount || 0);
   if (SHIPPING_TAXABLE[region]) {
     base += amounts.shipping || 0;
   }
