@@ -56,7 +56,7 @@ class TtlCache {
  * @returns {string}
  */
 function defaultKeyFn(args) {
-  return fingerprint(args[0]);
+  return fingerprint(args);
 }
 
 /**
