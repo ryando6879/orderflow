@@ -40,9 +40,9 @@ function register(router) {
   // GET /admin/exports/orders.csv?from=&to=
   router.get(
     "/admin/exports/orders.csv",
-    (ctx) => {
+  async (ctx) => {
       const { from, to } = dateRange(ctx.query);
-      const csv = reportingService.orderExportCsv(from, to);
+    const csv = await reportingService.orderExportCsv(from, to);
       ctx.res.setHeader("content-disposition", 'attachment; filename="orders.csv"');
       return text(ctx.res, 200, csv, "text/csv; charset=utf-8");
     },
