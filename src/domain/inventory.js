@@ -17,7 +17,7 @@
  * @returns {number} units available to promise (never negative)
  */
 function availableUnits(record) {
-  return Math.max(0, record.onHand);
+  return Math.max(0, record.onHand - (record.reserved || 0));
 }
 
 /**

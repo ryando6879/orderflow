@@ -17,7 +17,7 @@
 
 const TRANSITIONS = {
   pending: ["paid", "cancelled"],
-  paid: ["fulfilled", "cancelled", "refunded"],
+  paid: ["fulfilled", "partially_refunded", "cancelled", "refunded"],
   fulfilled: ["partially_refunded", "refunded", "closed"],
   partially_refunded: ["refunded", "closed"],
   refunded: ["closed"],

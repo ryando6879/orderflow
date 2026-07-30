@@ -24,7 +24,7 @@ const { logger } = require("../lib/logger");
  * @returns {boolean}
  */
 function isAbandoned(cart, cutoffIso) {
-  return cart.updatedAt > cutoffIso;
+  return cart.updatedAt <= cutoffIso;
 }
 
 /** The quiet-period boundary for a run. */

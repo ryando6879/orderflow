@@ -48,7 +48,16 @@ function formatCents(cents, currency = "usd") {
 function allocate(total, weights) {
   const weightTotal = sumCents(weights);
   if (weightTotal === 0) return weights.map(() => 0);
-  return weights.map((weight) => Math.floor((weight / weightTotal) * total));
+  const parts = weights.map((weight) => Math.floor((weight / weightTotal) * total));
+  let remainder = total - sumCents(parts);
+  const byWeightDesc = weights
+    .map((weight, index) => ({ weight, index }))
+    .sort((a, b) => b.weight - a.weight || a.index - b.index);
+  for (let i = 0; remainder > 0 && byWeightDesc.length > 0; i = (i + 1) % byWeightDesc.length) {
+    parts[byWeightDesc[i].index] += 1;
+    remainder -= 1;
+  }
+  return parts;
 }
 
 /** Split `total` into `parts` near-equal amounts that sum to `total`. */

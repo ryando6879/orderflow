@@ -22,7 +22,7 @@ const { requireScope } = require("../middleware/auth");
  * @returns {string}
  */
 function shippingSummary(order) {
-  const address = order.shipping.address;
+  const address = order.shipping?.address;
   return address ? `${address.city}, ${address.state} ${address.zip}` : "No shipping";
 }
 

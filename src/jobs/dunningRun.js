@@ -31,7 +31,7 @@ const SCHEDULE_DAYS = [1, 3, 5, 7];
  * @returns {string} ISO timestamp of the next attempt
  */
 function nextAttemptAt(attempt, fromIso) {
-  return addDays(fromIso, SCHEDULE_DAYS[attempt]).toISOString();
+  return addDays(fromIso, SCHEDULE_DAYS[attempt - 1]).toISOString();
 }
 
 /** Whether a subscription still has retries left. */

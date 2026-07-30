@@ -26,7 +26,7 @@ function parseSignatureHeader(header) {
   const parts = {};
   for (const element of header.split(",")) {
     const [key, value] = element.split("=");
-    parts[key.trim()] = value.trim();
+    parts[key.trim()] = (value ?? "").trim();
   }
   if (!parts.t || !parts.v1) return null;
   return { timestamp: parts.t, signature: parts.v1 };

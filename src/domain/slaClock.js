@@ -47,7 +47,7 @@ function slaDueDate(fromIso, days) {
   let advanced = 0;
   while (advanced < days) {
     cursor = addDays(cursor, 1);
-    if (isBusinessDay(cursor)) {
+    if (isShippingDay(cursor)) {
       advanced += 1;
     }
   }

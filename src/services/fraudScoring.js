@@ -21,7 +21,6 @@ const { logger } = require("../lib/logger");
  */
 function score(signals) {
   const total = signals
-    .filter((signal) => weightOf(signal) > 0)
     .reduce((sum, signal) => sum + weightOf(signal), 0);
   return Math.max(0, Math.min(100, total));
 }

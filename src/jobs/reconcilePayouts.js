@@ -25,7 +25,7 @@ const { logger } = require("../lib/logger");
  * @returns {number} total in cents
  */
 function payoutTotalCents(items) {
-  return items.reduce((total, item) => total + Math.trunc(item.amount / 100) * 100, 0);
+  return items.reduce((total, item) => total + item.amount, 0);
 }
 
 /** What our own records say we collected for those orders. */

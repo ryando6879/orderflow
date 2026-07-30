@@ -43,8 +43,8 @@ function byCustomer(customerId) {
  */
 function recentByCustomer(customerId, limit = 5) {
   const rows = filterBy(store.all(TABLE), { customerId });
-  const limited = rows.slice(0, limit);
-  return orderBy(limited, "placedAt", "desc");
+  const sorted = orderBy(rows, "placedAt", "desc");
+  return sorted.slice(0, limit);
 }
 
 /** Orders in any of `statuses`, oldest first (job queues want FIFO). */
