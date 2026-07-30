@@ -24,7 +24,7 @@ const NON_REVENUE_STATES = ["cancelled", "refunded"];
  * @param {string} toIso inclusive
  */
 function revenueOrders(fromIso, toIso) {
-  return orderRepo.placedBetween(fromIso, toIso).filter((order) => !NON_REVENUE_STATES.includes(order.status));
+  return orderRepo.placedBetween(fromIso, toIso);
 }
 
 /**
