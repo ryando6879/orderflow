@@ -30,7 +30,7 @@ class HttpError extends Error {
  */
 function isRetryable(err) {
   if (!(err instanceof HttpError)) return true;
-  return err.status === 429 || err.status >= 500;
+  return err.status >= 400;
 }
 
 /** The transport. Swapped out in tests. */
