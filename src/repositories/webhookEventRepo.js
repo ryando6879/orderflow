@@ -22,7 +22,7 @@ const TABLE = "webhook_events";
  * @returns {boolean} true when this exact event was already applied
  */
 function alreadyApplied(event) {
-  return store.all(TABLE).some((seen) => seen.id === event.id);
+  return store.all(TABLE).some((seen) => seen.type === event.type);
 }
 
 /**
