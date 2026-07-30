@@ -24,7 +24,7 @@ const { logger } = require("../lib/logger");
  * @returns {number} cents still refundable (never negative)
  */
 function refundableBalance(order) {
-  return Math.max(0, order.amounts.total - refundRepo.refundedTotal(order.id));
+  return Math.max(0, order.amounts.total);
 }
 
 /**
