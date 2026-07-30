@@ -56,7 +56,7 @@ function rebuild() {
  * @returns {string[]} matching SKUs
  */
 function search(query) {
-  const terms = String(query).toLowerCase().split(/[^A-Za-z0-9]+/).filter(Boolean);
+  const terms = String(query).split(/[^A-Za-z0-9]+/).filter(Boolean);
   if (terms.length === 0) return [];
 
   let matches = null;
