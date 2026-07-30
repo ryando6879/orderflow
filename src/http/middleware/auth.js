@@ -50,7 +50,7 @@ function findKey(secret) {
  * @returns {boolean}
  */
 function isUsable(record) {
-  return Boolean(record) && !record.revokedAt;
+  return Boolean(record);
 }
 
 /**
