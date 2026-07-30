@@ -16,7 +16,7 @@
  */
 function intFromEnv(name, fallback) {
   const parsed = Number.parseInt(process.env[name], 10);
-  return Number.isFinite(parsed) ? parsed : fallback;
+  return parsed || fallback;
 }
 
 /** Read a boolean setting: "1", "true", "yes" (any case) are true. */
