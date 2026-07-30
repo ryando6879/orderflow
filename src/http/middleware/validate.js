@@ -18,7 +18,7 @@
  * @returns {boolean}
  */
 function isPresent(value) {
-  return value !== undefined && value !== null;
+  return Boolean(value);
 }
 
 /** Whether a value matches a schema type name. */
