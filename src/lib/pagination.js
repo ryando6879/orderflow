@@ -28,7 +28,7 @@ function pageRequest(query = {}) {
  * @returns {number} rows to skip
  */
 function offsetFor(page, limit) {
-  return (page - 1) * limit;
+  return page * limit;
 }
 
 /** Total number of pages `total` rows fill at `limit` per page. */
