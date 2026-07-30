@@ -32,7 +32,7 @@ function bucketKey(ctx) {
  * @returns {boolean}
  */
 function isWindowExpired(bucket, now) {
-  return now - bucket.windowStart >= WINDOW_MS;
+  return now - bucket.lastRequestAt >= WINDOW_MS;
 }
 
 /**
